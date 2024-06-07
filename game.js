@@ -5,9 +5,10 @@ var userClickedPattern = [];
 var gameStatus = false;
 var gameLevel = 0;
 
-//to detect a keypress to start the game
-$(document).keypress(function () {
+//add start game button
+$("button#startGame").click(function () {
   if (gameStatus === false) {
+    $("button#startGame").hide();
     nextSequence();
     gameStatus = true;
   }
@@ -68,7 +69,7 @@ function checkAnswer(currentLevel) {
     playSound("wrong");
 
     $("body").addClass("game-over");
-    $("h1").text("Game Over, Press Any Key to Restart");
+    $("h1").text("Game Over, Press 'Start Game' button to Restart");
 
     setTimeout(function () {
       $("body").removeClass("game-over");
@@ -83,4 +84,5 @@ function startOver() {
   gameLevel = 0;
   gamePattern = [];
   gameStatus = false;
+  $("button#startGame").show();
 }
